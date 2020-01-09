@@ -1,1 +1,0 @@
-const Finance = require('../models/')
