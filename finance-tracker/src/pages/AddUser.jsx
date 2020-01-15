@@ -33,12 +33,17 @@ const CancelButton = styled.a.attrs({
 })`
     margin: 15px 15px 15px 5px;
 `
+
+const initState = {
+    name: '',
+    totalFunds: 0,
+    allocatedFunds: {},
+    purchases: {},
+}
 class AddUser extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            name: '',
-        }
+        this.state = initState
     }
 
     handleChangeInputName = async event => {
@@ -48,11 +53,9 @@ class AddUser extends Component {
 
     handleAddUser = async() => {
         const { name } = this.state
-        const payload = { name, tempValue: 1234 }
+        const payload = { name,  }
         await api.addUser(payload).then(res => {
-            this.setState({
-                name: '',
-            })
+            this.setState(initState)
         })
     }
 
@@ -61,7 +64,7 @@ class AddUser extends Component {
         return (
             <div>
                 <Wrapper>
-                    <Title>Add User</Title>
+                    <Title>Create User</Title>
                     <Label>Username</Label>
                     <InputText type="text" value={name} onChange={this.handleChangeInputName}/>
 

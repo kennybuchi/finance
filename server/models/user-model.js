@@ -4,7 +4,9 @@ const Schema = mongoose.Schema
 const User = new Schema(
     {
         name: { type: String, required: true },
-        tempValue: { type: Number, required: true },
+        totalFunds: { type: Number, required: true },
+        allocatedFunds: { type: Object, required: true },
+        purchases: { type: Object, required: true }
     },
     { timestamps: true },
 )
